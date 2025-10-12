@@ -1,0 +1,12 @@
+[submodule "PAROAtten"]
+	path = PAROAtten
+	url = https://github.com/jamescsq47/PAROAtten.git
+[submodule "sparge_customize"]
+	path = sparge_customize
+	url = https://github.com/jamescsq47/sparge_customize.git
+[submodule "usp_customize"]
+	path = usp_customize
+	url = https://github.com/jamescsq47/usp_customize.git
+[submodule "para_customize"]
+	path = para_customize
+	url = https://github.com/jamescsq47/para_customize.git
