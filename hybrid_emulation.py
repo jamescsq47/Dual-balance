@@ -1016,6 +1016,7 @@ for block in range(40):
     if pad_h != 0 or pad_w != 0:
         sparse_piece = torch.nn.functional.pad(sparse_piece, (0, pad_w, 0, pad_h), "constant", 0)
 
+    print(sparse_piece.float().sum()/sparse_piece.numel())
     sparse_final4, _, _, _, transpose_matrix_q1, _, _, _, _ = hybrid_permute_v4(sparse_piece, ulysses_degree=ulysses_degree, ring_degree=ring_degree,reward=2)
     total_transpose_count += transpose_matrix_q1[0].sum()-transpose_matrix_q1[0][0]
 
@@ -1028,13 +1029,6 @@ for block in range(40):
     print(f"{block}: {hybrid_imbalance_ratio(sparse_piece, ulysses_degree=ulysses_degree, ring_degree=ring_degree)}")
     print(f"v4: {hybrid_imbalance_ratio(sparse_final4, ulysses_degree=ulysses_degree, ring_degree=ring_degree)},{transpose_matrix_q1[0].sum()-transpose_matrix_q1[0][0]}")
     # print(f"v5: {hybrid_imbalance_ratio(sparse_final5, ulysses_degree=ulysses_degree, ring_degree=ring_degree)}, {transpose_matrix_q[0].sum()-transpose_matrix_q[0][0]}")
-
-block = 0
-sparse_piece = sparse_final4
-H, W = sparse_piece.shape[-2], sparse_piece.shape[-1]
-head_sum = sparse_piece.sum(dim=(-1,-2))
-for head in sparse_piece[0].shape:
-    print(f"head{head}, head sum: {head_sum[head]//H//W}")
 
 print(f"average: {sum(imbalance_ratio_list) / len(imbalance_ratio_list)}")
 print(f"average v4: {sum(new_imbalance_ratio_list_v4) / len(new_imbalance_ratio_list_v4)}")

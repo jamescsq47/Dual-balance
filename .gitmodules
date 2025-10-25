@@ -10,3 +10,6 @@
 [submodule "para_customize"]
 	path = para_customize
 	url = https://github.com/jamescsq47/para_customize.git
+[submodule "xdit-customize"]
+	path = xdit-customize
+	url = https://github.com/jamescsq47/xdit-customize.git
