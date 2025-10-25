@@ -126,7 +126,7 @@ dependencies:
       - orjson==3.11.3
       - packaging==25.0
       - pandas==2.3.2
-      - para-attn==0.3.39.dev0+dirty
+      - para-attn==0.3.39.dev2+dirty
       - paroattention==0.0.1
       - parso==0.8.5
       - pexpect==4.9.0

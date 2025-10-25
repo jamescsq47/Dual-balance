@@ -2,3 +2,4 @@
 *.mp4
 *.json
 *.pth
+sparse_expanded.pth
