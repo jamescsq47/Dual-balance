@@ -1,4 +1,4 @@
-name: /mnt/public/chensiqi/anaconda3/envs/bdsa
+name: bdsa
 channels:
   - defaults
 dependencies:
@@ -63,7 +63,6 @@ dependencies:
       - fastapi==0.116.1
       - ffmpy==0.6.1
       - filelock==3.18.0
-      - flash-attn==2.8.2
       - flatbuffers==25.2.10
       - fonttools==4.59.1
       - frozenlist==1.7.0
@@ -126,8 +125,6 @@ dependencies:
       - orjson==3.11.3
       - packaging==25.0
       - pandas==2.3.2
-      - para-attn==0.3.39.dev2+dirty
-      - paroattention==0.0.1
       - parso==0.8.5
       - pexpect==4.9.0
       - pillow==11.3.0
@@ -154,7 +151,6 @@ dependencies:
       - ruff==0.12.11
       - safehttpx==0.1.6
       - safetensors==0.6.2
-      - sageattention==2.1.1
       - semantic-version==2.10.0
       - sentencepiece==0.2.1
       - setuptools-scm==9.2.0
@@ -162,7 +158,6 @@ dependencies:
       - six==1.17.0
       - sniffio==1.3.1
       - soupsieve==2.8
-      - spas-sage-attn==0.1.0
       - stack-data==0.6.3
       - starlette==0.47.3
       - sympy==1.13.1
@@ -174,9 +169,6 @@ dependencies:
       - tokenizers==0.21.4
       - tomli==2.2.1
       - tomlkit==0.13.3
-      - torch==2.5.1+cu121
-      - torchaudio==2.5.1+cu121
-      - torchvision==0.20.1+cu121
       - tqdm==4.67.1
       - traitlets==5.14.3
       - transformers==4.55.2
@@ -193,8 +185,6 @@ dependencies:
       - werkzeug==3.1.3
       - wheel==0.41.3
       - wrapt==1.17.3
-      - xfuser==0.4.4
       - yarl==1.20.1
-      - yunchang==0.6.3.post1
       - zipp==3.23.0
-prefix: /mnt/public/chensiqi/anaconda3/envs/bdsa
+prefix: bdsa
