@@ -7,7 +7,7 @@ This repository contains the official implementation of **_db_-SP**, a sparsity-
 By addressing workload imbalance at both the **head level** and **block level**, _db_-SP achieves significant speedups in both attention computation and end-to-end inference latency.
 
 ## 🚀 Overview
-![Demo](assets/overview-v2.pdf)
+![Demo](assets/overview.png)
 Visual generative models like Diffusion Transformers (DiTs) rely heavily on self-attention, which becomes a bottleneck due to its quadratic complexity. While block-wise sparse attention reduces computation, existing sequence parallelism methods (e.g., Ulysses, Ring Attention) suffer from severe workload imbalance when applied to sparse masks.
 
 **_db_-SP** introduces:
