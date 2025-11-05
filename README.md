@@ -1,16 +1,16 @@
 # db-SP: Dual-Balanced Sequence Parallelism for Sparse Attention in Visual Generative Models
 
-[![Paper](https://img.shields.io/badge/Paper-MLSys%202026-blue)](https://anonymous.4open.science/r/Dual-balance-3ECE)  
-[![Code](https://img.shields.io/badge/Code-Anonymous-important)](https://anonymous.4open.science/r/Dual-balance-3ECE)
+<!-- [![Paper](https://img.shields.io/badge/Paper-MLSys%202026-blue)](https://anonymous.4open.science/r/Dual-balance-3ECE)  
+[![Code](https://img.shields.io/badge/Code-Anonymous-important)](https://anonymous.4open.science/r/Dual-balance-3ECE) -->
 
-This repository contains the official implementation of **db-SP**, a sparsity-aware sequence parallelism technique designed to accelerate sparse attention in visual generative models (e.g., Diffusion Transformers).  
-By addressing workload imbalance at both the **head level** and **block level**, db-SP achieves significant speedups in both attention computation and end-to-end inference latency.
+This repository contains the official implementation of **_db_-SP**, a sparsity-aware sequence parallelism technique designed to accelerate sparse attention in visual generative models (e.g., Diffusion Transformers).  
+By addressing workload imbalance at both the **head level** and **block level**, _db_-SP achieves significant speedups in both attention computation and end-to-end inference latency.
 
 ## 🚀 Overview
-
+![Demo](assets/overview-v2.pdf)
 Visual generative models like Diffusion Transformers (DiTs) rely heavily on self-attention, which becomes a bottleneck due to its quadratic complexity. While block-wise sparse attention reduces computation, existing sequence parallelism methods (e.g., Ulysses, Ring Attention) suffer from severe workload imbalance when applied to sparse masks.
 
-**db-SP** introduces:
+**_db_-SP** introduces:
 - A **dual-balanced partitioning** method that balances workload across GPUs at both head and block levels
 - A **sparsity-aware strategy selection** mechanism that dynamically chooses the optimal parallel strategy per layer
 - Minimal overhead through **partitioning reuse** and **biased greedy algorithms**
@@ -43,6 +43,11 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 - PyTorch 2.5.1+
 - CUDA 12.1+
 - NCCL 2.21.5+
+
+
+- PAROAttention
+- SpargeAttn
+
 
 ### Install from Source
 ```bash
