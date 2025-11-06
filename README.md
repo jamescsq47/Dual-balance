@@ -1,4 +1,4 @@
-# db-SP: Dual-Balanced Sequence Parallelism for Sparse Attention in Visual Generative Models
+# _db_-SP: Dual-Balanced Sequence Parallelism for Sparse Attention in Visual Generative Models
 
 <!-- [![Paper](https://img.shields.io/badge/Paper-MLSys%202026-blue)](https://anonymous.4open.science/r/Dual-balance-3ECE)  
 [![Code](https://img.shields.io/badge/Code-Anonymous-important)](https://anonymous.4open.science/r/Dual-balance-3ECE) -->
@@ -19,19 +19,34 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 - **1.25×** end-to-end speedup  
 - **1.40×** attention speedup  
 - Near-perfect workload balance with **<5% overhead**
+![Demo](assets/results.png)
 
 ## 🧩 Method Highlights
 
+### Imbalance sparse ratio
+- Define a sparse imbalance ratio \( $ρ_s$ \) to quantify the workload imbalance
+
 ### Dual-Balanced Partitioning
 - **Head-Level**: Greedy assignment of attention heads to GPUs based on dense block counts
-- **Block-Level**: Biased greedy partitioning of Q/K/V chunks with reward factor \( R_b \) to minimize inter-GPU communication
+- **Block-Level**: Biased greedy partitioning of Q/K/V chunks with reward factor \( $R_b$ \) to minimize inter-GPU communication
+<!-- 并列显示两张示意图：每列占一半宽度 -->
+<table>
+	<tr>
+		<td align="center" width="50%">
+			<img src="assets/head-level.png" alt="Head-level" style="width:100%; max-width:600px;" />
+		</td>
+		<td align="center" width="50%">
+			<img src="assets/block-level.png" alt="Block-level" style="width:100%; max-width:600px;" />
+		</td>
+	</tr>
+</table>
 
 ### Sparsity-Aware Strategy Selection
 - Dynamically predicts the optimal parallel strategy (Ulysses, Ring Attention, or hybrid) per layer using a latency model
 - Pre-builds communication groups to eliminate runtime overhead
 
 ### Overhead Mitigation
-- Reuses partitioning plans across denoising steps via similarity threshold \( P_s \)
+- Reuses partitioning plans across denoising steps via similarity threshold \( $P_s$ \)
 - Overlaps communication with computation to hide latency
 
 ## 📦 Installation
@@ -44,13 +59,13 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 - CUDA 12.1+
 - NCCL 2.21.5+
 
-
+### Repo dependencies
 - PAROAttention
 - SpargeAttn
 
 
 ### Install from Source
 ```bash
-git clone https://anonymous.4open.science/r/Dual-balance-3ECE
-cd db-SP
-pip install -e .
+git clone https://github.com/jamescsq47/Dual-balance.git
+cd Dual-balance
+conda env create -f environment.yml
