@@ -29,20 +29,26 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 ### Dual-Balanced Partitioning
 - **Head-Level**: Greedy assignment of attention heads to GPUs based on dense block counts
 - **Block-Level**: Biased greedy partitioning of Q/K/V chunks with reward factor \( $R_b$ \) to minimize inter-GPU communication
-<!-- 并列显示两张示意图：每列占一半宽度 -->
+<!-- 并列显示两张示意图：每列占一半宽度，使用 figure + figcaption 添加注释 -->
 <table>
 	<tr>
 		<td align="center" width="50%">
-			<img src="assets/head-level.png" alt="Head-level" style="width:100%; max-width:600px;" />
+			<figure>
+				<img src="assets/head-level.png" alt="Head-level partitioning" style="width:100%; max-width:600px;" />
+				<figcaption><strong>head-level partitioning</strong></figcaption>
+			</figure>
 		</td>
 		<td align="center" width="50%">
-			<img src="assets/block-level.png" alt="Block-level" style="width:100%; max-width:600px;" />
+			<figure>
+				<img src="assets/block-level.png" alt="Block-wise partitioning" style="width:100%; max-width:600px;" />
+				<figcaption><strong>block-wise partitioning</strong></figcaption>
+			</figure>
 		</td>
 	</tr>
 </table>
 
 ### Sparsity-Aware Strategy Selection
-- Dynamically predicts the optimal parallel strategy (Ulysses, Ring Attention, or hybrid) per layer using a latency model
+- Dynamically predicts the optimal parallel strategy (Ulysses, Ring Attention, or hybrid) per layer using a formula
 - Pre-builds communication groups to eliminate runtime overhead
 
 ### Overhead Mitigation
@@ -69,3 +75,21 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 git clone https://github.com/jamescsq47/Dual-balance.git
 cd Dual-balance
 conda env create -f environment.yml
+```
+
+## ⚙️ Usage
+### End-to-end 
+```bash
+cd para_customize
+torchrun --nproc_per_node=8 parallel_examples/run_wan_paro.py
+torchrun --nproc_per_node=8 parallel_examples/run_wan_sparge.py
+
+cd xdit-customize
+bash run_cogvideo.sh
+```
+
+## Attention
+```bash
+cd usp_customize
+torchrun --nproc_per_node=8 ./test/test_hybrid_attn.py --sp_ulysses_degree 8 --ring_impl_type "basic" --attn_impl paro
+```

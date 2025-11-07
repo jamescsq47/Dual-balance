@@ -369,14 +369,6 @@ def hybrid_permute_v4(
             new_col_deperm_idx_list.append(new_col_deperm_idx)
 
         sparse_final = torch.stack(sparse_final_list, dim=0).contiguous()
-        # head_perm_idx = torch.stack(head_perm_idx_list, dim=0)
-        # new_row_perm_idx = torch.stack(new_row_perm_idx_list, dim=0)
-        # new_col_perm_idx = torch.stack(new_col_perm_idx_list, dim=0)
-        # transpose_matrix_q = torch.stack(transpose_matrix_q_list, dim=0)
-        # transpose_matrix_k = torch.stack(transpose_matrix_k_list, dim=0)
-        # head_deperm_idx = torch.stack(head_deperm_idx_list, dim=0)
-        # new_row_deperm_idx = torch.stack(new_row_deperm_idx_list, dim=0)
-        # new_col_deperm_idx = torch.stack(new_col_deperm_idx_list, dim=0)
 
     return sparse_final, head_perm_idx_list, new_row_perm_idx_list, new_col_perm_idx_list, transpose_matrix_q_list, transpose_matrix_k_list, head_deperm_idx_list, new_row_deperm_idx_list, new_col_deperm_idx_list
 
