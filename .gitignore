@@ -1,0 +1,6 @@
+*.log
+*.mp4
+*.json
+*.pth
+*.pt
+sparse_expanded.pth

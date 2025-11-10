@@ -1,0 +1,95 @@
+# _db_-SP: Dual-Balanced Sequence Parallelism for Sparse Attention in Visual Generative Models
+
+<!-- [![Paper](https://img.shields.io/badge/Paper-MLSys%202026-blue)](https://anonymous.4open.science/r/Dual-balance-3ECE)  
+[![Code](https://img.shields.io/badge/Code-Anonymous-important)](https://anonymous.4open.science/r/Dual-balance-3ECE) -->
+
+This repository contains the official implementation of **_db_-SP**, a sparsity-aware sequence parallelism technique designed to accelerate sparse attention in visual generative models (e.g., Diffusion Transformers).  
+By addressing workload imbalance at both the **head level** and **block level**, _db_-SP achieves significant speedups in both attention computation and end-to-end inference latency.
+
+## 🚀 Overview
+![Demo](assets/overview.png)
+Visual generative models like Diffusion Transformers (DiTs) rely heavily on self-attention, which becomes a bottleneck due to its quadratic complexity. While block-wise sparse attention reduces computation, existing sequence parallelism methods (e.g., Ulysses, Ring Attention) suffer from severe workload imbalance when applied to sparse masks.
+
+**_db_-SP** introduces:
+- A **dual-balanced partitioning** method that balances workload across GPUs at both head and block levels
+- A **sparsity-aware strategy selection** mechanism that dynamically chooses the optimal parallel strategy per layer
+- Minimal overhead through **partitioning reuse** and **biased greedy algorithms**
+
+### Key Results
+- **1.25×** end-to-end speedup  
+- **1.40×** attention speedup  
+- Near-perfect workload balance with **<5% overhead**
+![Demo](assets/results.png)
+
+## 🧩 Method Highlights
+
+### Imbalance sparse ratio
+- Define a sparse imbalance ratio \( $ρ_s$ \) to quantify the workload imbalance
+
+### Dual-Balanced Partitioning
+- **Head-Level**: Greedy assignment of attention heads to GPUs based on dense block counts
+- **Block-Level**: Biased greedy partitioning of Q/K/V chunks with reward factor \( $R_b$ \) to minimize inter-GPU communication
+<!-- 并列显示两张示意图：每列占一半宽度，使用 figure + figcaption 添加注释 -->
+<table>
+	<tr>
+		<td align="center" width="50%">
+			<figure>
+				<img src="assets/head-level.png" alt="Head-level partitioning" style="width:100%; max-width:600px;" />
+				<figcaption><strong>head-level partitioning</strong></figcaption>
+			</figure>
+		</td>
+		<td align="center" width="50%">
+			<figure>
+				<img src="assets/block-level.png" alt="Block-wise partitioning" style="width:100%; max-width:600px;" />
+				<figcaption><strong>block-wise partitioning</strong></figcaption>
+			</figure>
+		</td>
+	</tr>
+</table>
+
+### Sparsity-Aware Strategy Selection
+- Dynamically predicts the optimal parallel strategy (Ulysses, Ring Attention, or hybrid) per layer using a formula
+- Pre-builds communication groups to eliminate runtime overhead
+
+### Overhead Mitigation
+- Reuses partitioning plans across denoising steps via similarity threshold \( $P_s$ \)
+- Overlaps communication with computation to hide latency
+
+## 📦 Installation
+
+> 🔧 *This section will be updated once the code is fully organized.*
+
+### Dependencies
+- Python 3.8+
+- PyTorch 2.5.1+
+- CUDA 12.1+
+- NCCL 2.21.5+
+
+### Repo dependencies
+- PAROAttention
+- SpargeAttn
+
+
+### Install from Source
+```bash
+git clone https://github.com/jamescsq47/Dual-balance.git
+cd Dual-balance
+conda env create -f environment.yml
+```
+
+## ⚙️ Usage
+### End-to-end 
+```bash
+cd para_customize
+torchrun --nproc_per_node=8 parallel_examples/run_wan_paro.py
+torchrun --nproc_per_node=8 parallel_examples/run_wan_sparge.py
+
+cd xdit-customize
+bash run_cogvideo.sh
+```
+
+## Attention
+```bash
+cd usp_customize
+torchrun --nproc_per_node=8 ./test/test_hybrid_attn.py --sp_ulysses_degree 8 --ring_impl_type "basic" --attn_impl paro
+```

@@ -1,0 +1,26 @@
+# ninja log v5
+0	25270	1761391215095043590	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/pybind_sm80.o	84a636249f1cd54d
+0	223638	1761391413453654449	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	50044c9310076532
+0	229359	1761391419173499190	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_int8_cuda_sm80.o	abe9534bf063b092
+0	24758	1761391444560810159	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/rope/pybind.o	8a28bacbbae02911
+0	39186	1761391458992418533	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/rope/rope.o	1e37af15955bf41b
+0	25513	1761391485451700616	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/fused/pybind.o	bf1ec8084bd9719a
+0	39380	1761391499323324292	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/fused/fused.o	40804fec38764c16
+23	25450	1761397146782481922	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/pybind_sm80.o	2f9d7b5f62c8b6d4
+23	225138	1761397346460495911	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	b4825236bfd88427
+23	230990	1761397352312322351	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_int8_cuda_sm80.o	d544eb64e394c359
+19	24950	1761397382539427287	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/rope/pybind.o	fa9c4733c4e359b8
+19	38552	1761397396147025115	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/rope/rope.o	5a6e7c48ecaca5f7
+22	24825	1761397477116641126	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/fused/pybind.o	a3e25b42e3796e90
+21	40007	1761397492300195687	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/fused/fused.o	bed3a78009cb5cc2
+30	25609	1761738769166497534	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/pybind_sm80.o	84a636249f1cd54d
+31	207918	1761738951464178589	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	50044c9310076532
+31	231586	1761738975135385790	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_int8_cuda_sm80.o	abe9534bf063b092
+27	25297	1761739000906528865	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/rope/pybind.o	8a28bacbbae02911
+27	37109	1761739012722138057	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/rope/rope.o	1e37af15955bf41b
+29	25709	1761739038865277809	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/fused/pybind.o	bf1ec8084bd9719a
+29	38338	1761739051496864292	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/fused/fused.o	40804fec38764c16
+29	216172	1761740639013698326	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	50044c9310076532
+29	304035	1761743002016237527	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	50044c9310076532
+27	212614	1761743501099316149	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	50044c9310076532
+27	224918	1761745877802257170	/root/chensiqi/Dual-balance/PAROAtten/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda_sm80.o	50044c9310076532

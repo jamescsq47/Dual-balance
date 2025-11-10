@@ -1,0 +1,6 @@
+# ninja log v5
+0	27590	1761391664322850420	/root/chensiqi/Dual-balance/sparge_customize/build/temp.linux-x86_64-cpython-310/csrc/qattn/pybind.o	653205a350241823
+0	68543	1761391705277740548	/root/chensiqi/Dual-balance/sparge_customize/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f8_cuda.o	86592d6b7f2c501c
+0	81184	1761391717917398056	/root/chensiqi/Dual-balance/sparge_customize/build/temp.linux-x86_64-cpython-310/csrc/qattn/qk_int_sv_f16_cuda.o	c2a146e5ef80a434
+0	25300	1761391743676700123	/root/chensiqi/Dual-balance/sparge_customize/build/temp.linux-x86_64-cpython-310/csrc/fused/pybind.o	ebfb07843bdd64e5
+0	36000	1761391754376410243	/root/chensiqi/Dual-balance/sparge_customize/build/temp.linux-x86_64-cpython-310/csrc/fused/fused.o	ff659ffd6a8cb2e0
