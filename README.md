@@ -72,7 +72,6 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 
 ### Install from Source
 ```bash
-git clone https://github.com/jamescsq47/Dual-balance.git
 cd Dual-balance
 conda env create -f environment.yml
 ```
