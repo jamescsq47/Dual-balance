@@ -56,14 +56,11 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 - Overlaps communication with computation to hide latency
 
 ## 📦 Installation
-
-> 🔧 *This section will be updated once the code is fully organized.*
-
 ### Dependencies
-- Python 3.8+
-- PyTorch 2.5.1+
-- CUDA 12.1+
-- NCCL 2.21.5+
+- Python 3.8
+- PyTorch 2.5.1
+- CUDA 12.1
+- NCCL 2.21.5
 
 ### Repo dependencies
 - PAROAttention
@@ -72,13 +69,49 @@ Visual generative models like Diffusion Transformers (DiTs) rely heavily on self
 
 ### Install from Source
 ```bash
-git clone https://github.com/jamescsq47/Dual-balance.git
 cd Dual-balance
 conda env create -f environment.yml
 ```
 
 ## ⚙️ Usage
-### End-to-end 
+### Genearte partitioning plans
+```py
+sparse, head_perm_idx, new_row_perm_idx, new_col_perm_idx, transpose_matrix_q, transpose_matrix_k, head_deperm_idx, new_row_deperm_idx, new_col_deperm_idx = hybrid_permute_v4(sparse,sp_ulysses_degree,sp_ring_degree,2)
+```
+### Inference using dp-SP
+```py
+usp_attn = LongContextAttention(
+	ring_impl_type="basic",
+	attn_type="paro",
+	attn_processor=attn_processor,
+)
+local_out = usp_attn(
+	local_q,
+	local_k,
+	local_v,
+	dropout_p=dropout_p,
+	causal=causal,
+	window_size=window_size,
+	softcap=0.0,
+	alibi_slopes=alibi_slopes,
+	deterministic=deterministic,
+	return_attn_probs=True,
+	sparse=local_sparse,
+	head_perm_idx=head_perm_idx,
+	head_deperm_idx=head_deperm_idx,
+	new_row_perm_idx = new_row_perm_idx[rank%sp_ring_degree],
+	new_col_perm_idx = new_col_perm_idx[rank%sp_ring_degree],
+	new_row_deperm_idx = new_row_deperm_idx[rank%sp_ring_degree],
+	transpose_matrix_q = transpose_matrix_q[rank%sp_ring_degree],
+	transpose_matrix_q_T = transpose_matrix_q.T[rank%sp_ring_degree],
+	transpose_matrix_k = transpose_matrix_k[rank%sp_ring_degree],
+	transpose_matrix_k_T = transpose_matrix_k.T[rank%sp_ring_degree],
+	transpose_matrix_o = transpose_matrix_q.T[rank%sp_ring_degree],
+	transpose_matrix_o_T = transpose_matrix_q[rank%sp_ring_degree],
+)
+```
+
+### End-to-end test
 ```bash
 cd para_customize
 torchrun --nproc_per_node=8 parallel_examples/run_wan_paro.py
@@ -88,8 +121,8 @@ cd xdit-customize
 bash run_cogvideo.sh
 ```
 
-## Attention
+## Attention test
 ```bash
 cd usp_customize
-torchrun --nproc_per_node=8 ./test/test_hybrid_attn.py --sp_ulysses_degree 8 --ring_impl_type "basic" --attn_impl paro
+torchrun --nproc_per_node=8 ./test/test_hybrid_attn.py --sp_ulysses_degree 8 --ring_impl_type "basic" --attn_impl "paro"
 ```
